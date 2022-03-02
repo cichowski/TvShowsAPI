@@ -1,23 +1,63 @@
-# Lumen PHP Framework
+# TV Shows
+Simple application made as a part of recruitment process.
+ 
+## Architecture & dependencies
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
+- It is build on Lumen.
+- It uses http://www.tvmaze.com/ API for taking results
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+## Requirements
 
-## Official Documentation
+Application needs for running:
+- php 7.3+ server
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+Application needs for set up:
+- composer
 
-## Contributing
+## Installation
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. Download the repository by preffered way
 
-## Security Vulnerabilities
+- https: `git clone https://github.com/cichowski/tvshows.git`
+- ssh: `git@github.com:cichowski/tvshows.git`
+- or just download archive and unzip files
+ 
+2. Run `composer install`
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+3. Rename `.env.local` to `.env`
+
+4. Change `APP_URL` or even other values in `.env`
+
+## Configuration
+
+Number of results per page returned by API:
+- Set `resultsPerPage` in `config/tvshows.php` file
+
+## Usage
+
+API
+- address:
+    - `your.domain/`
+- parameters:
+    - `q` - search phrase (required, alphanumerical)
+    - `p` - ask for a specific page (positive integer, default: 1)
+    - `s` - page size: number o results on single page (positive integer, default: see Configuration)
+- examples:
+    - `localhost/?q=castle`
+    - `json-api.local/?s=5&p=1&q=war`    
+       
+
+## Issues
+
+1. For some reason http://www.tvmaze.com/ API right now returns maximum 10 results.
+2. Keep in mind that either this application and TV Maze caches every search query for 1 hour.
+
+## ToDo
+
+* Cover whole the rest of PHP code with unit tests 
+* Write OpenAPI description for API endpoint
+* Build Swagger documentation using above
+* For many users: cache tv shows in advance 
 
 ## License
 
