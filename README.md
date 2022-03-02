@@ -54,7 +54,6 @@ API
 
 ## ToDo
 
-* Cover whole the rest of PHP code with unit tests 
 * Build Swagger documentation
 * May needs some sort option in a future
 * For many users: maybe cache tv shows in advance 
