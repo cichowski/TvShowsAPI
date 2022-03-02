@@ -55,9 +55,9 @@ API
 ## ToDo
 
 * Cover whole the rest of PHP code with unit tests 
-* Write OpenAPI description for API endpoint
-* Build Swagger documentation using above
-* For many users: cache tv shows in advance 
+* Build Swagger documentation
+* May needs some sort option in a future
+* For many users: maybe cache tv shows in advance 
 
 ## License
 

@@ -30,10 +30,42 @@ class TVMazeController extends Controller
     }
 
     /**
+     * @link [GET] /
+     * @SWG\Get(
+     *     path="/",
+     *     summary="Get search result",
+     *     @SWG\Parameter(
+     *         name="q",
+     *         in="query",
+     *         description="Search phrase",
+     *         type="string",
+     *         required=true
+     *     ),
+     *     @SWG\Parameter(
+     *         name="p",
+     *         in="query",
+     *         description="Number of requested result page",
+     *         type="integer"
+     *     ),
+     *     @SWG\Parameter(
+     *         name="s",
+     *         in="query",
+     *         description="Page size, number of hits on single response page",
+     *         type="integer"
+     *     ),
+     *     @SWG\Response(
+     *         response=200,
+     *         description="List of search hits",
+     *     ),
+     *     @SWG\Response(
+     *         response=422,
+     *         description="Validation errors"
+     *     )
+     * )
+     *
      * @param Request $request
      * @return JsonResponse
      * @throws ValidationException
-     * @throws TVMazeResponseException
      */
     public function search(Request $request): JsonResponse
     {
