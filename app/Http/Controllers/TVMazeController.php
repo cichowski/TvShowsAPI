@@ -1,14 +1,12 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Modules\TVMaze\TVMazeResponseException;
 use App\Modules\TVMaze\TVMazeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
-/**
- * @author Dariusz Cichowski
- */
 class TVMazeController extends Controller
 {
 
@@ -29,6 +27,7 @@ class TVMazeController extends Controller
      * @param Request $request
      * @return JsonResponse
      * @throws ValidationException
+     * @throws TVMazeResponseException
      */
     public function search(Request $request): JsonResponse
     {
