@@ -60,6 +60,10 @@ class TVMazeController extends Controller
      *     @SWG\Response(
      *         response=422,
      *         description="Validation errors"
+     *     ),
+     *     @SWG\Response(
+     *         response=424,
+     *         description="Error when getting response from third party API"
      *     )
      * )
      *
@@ -75,13 +79,15 @@ class TVMazeController extends Controller
             's' => 'integer|min:1',
         ]);
 
+        $results = $this->getResponseData(
+            $request->get('q'),
+            $request->get('p'),
+            $request->get('s')
+        );
+
         return response()->json(
-            $this->getResponseData(
-                $request->get('q'),
-                $request->get('p'),
-                $request->get('s')
-            )->toArray(),
-            JsonResponse::HTTP_OK
+            $results->toArray(),
+            $results->hasErrors() ? JsonResponse::HTTP_FAILED_DEPENDENCY : JsonResponse::HTTP_OK
         );
     }
 

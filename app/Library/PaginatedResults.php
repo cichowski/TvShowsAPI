@@ -64,6 +64,11 @@ class PaginatedResults
         $this->numberOfPages = 0;
     }
 
+    public function hasErrors(): bool
+    {
+        return !empty($this->errorMessage);
+    }
+
     /**
      * @return array
      */
